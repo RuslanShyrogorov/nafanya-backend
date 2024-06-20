@@ -2,6 +2,7 @@
   "name": "nafanya-backend",
   "description": "backend for Nafanya shoes store",
   "version": "0.0.1",
+  "license": "MIT",
   "packageManager": "yarn@1.22.22",
   "main": "server.ts",
   "scripts": {

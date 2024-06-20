@@ -1,6 +1,22 @@
-console.log('Hello world');
+import mongoose from 'mongoose';
+import * as process from 'node:process';
 
-console.log('Ruslan');
+import { app } from './app';
 
-const arr = [1, 3, 4];
-console.log(arr);
+const { DB_HOST, PORT } = process.env;
+
+const connectDB = async () => {
+  try {
+    if (DB_HOST) {
+      await mongoose.connect(DB_HOST);
+    }
+    app.listen(PORT, () => {
+      console.log('Server running on port', PORT);
+    });
+    console.log('Database connection successful!');
+  } catch (error) {
+    console.error(error);
+    process.exit(1);
+  }
+};
+connectDB();

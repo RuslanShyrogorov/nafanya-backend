@@ -1,10 +1,12 @@
 import { Router } from 'express';
 
-import { getShoes, getShoesById } from '@src/helpers/shoes';
+import { ctrl } from '@src/controllers';
+import { isValidId } from '@src/middlewares';
 
 export const shoesRouter = Router();
 
-shoesRouter.get('/', getShoes);
-shoesRouter.get('/:id', getShoesById);
-
-// export default routerShoes;
+shoesRouter.get('/', ctrl.getShoes);
+shoesRouter.get('/:id', isValidId, ctrl.getShoesById);
+shoesRouter.post('/', ctrl.createShoes);
+shoesRouter.put('/:id', isValidId, ctrl.updateShoes);
+shoesRouter.delete('/:id', isValidId, ctrl.deleteShoes);
